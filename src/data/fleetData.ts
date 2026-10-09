@@ -64,13 +64,23 @@ export const ambulanceFleet: Vehicle[] = [
   },
   {
     id: 'amb-omni',
-    name: 'Omni Ambulance',
+    name: 'Omni Ambulance (OR 19F 5225)',
     category: 'Ambulance',
-    typeBadge: 'Medical Fleet',
+    typeBadge: 'Rapid Transit / Stretcher',
     image: '/images/omni_ambulance.jpg',
-    description: 'Enquire for details regarding Omni ambulance transportation.',
+    description: 'Maruti Suzuki Omni ambulance (OR 19F 5225) equipped with emergency flasher beacon, patient stretcher bed, and oxygen support for swift patient transfers.',
     isEmergency: true,
     serviceTag: 'Omni Ambulance',
+  },
+  {
+    id: 'amb-dead-body-van',
+    name: 'Dead Body Freezer Van (OD02DJ8138)',
+    category: 'Ambulance',
+    typeBadge: 'Mobile Mortuary Unit',
+    image: '/images/freezer_service.jpg',
+    description: 'Specialized Dead Body Van & Swarga Ratha (OD02DJ8138) equipped with deep freezer box, chrome glass body, and attendant seating for dignified transit.',
+    isEmergency: true,
+    serviceTag: 'Dead Body Van / Freezer Service',
   },
 ];
 

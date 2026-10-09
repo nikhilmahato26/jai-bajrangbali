@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Phone, CalendarCheck, HeartPulse, Eye, ShieldCheck, CheckCircle2, X } from 'lucide-react';
+import { Phone, CalendarCheck, HeartPulse, Eye, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { businessInfo } from '../data/businessData';
+import { PhotoLightboxModal, type LightboxData } from './PhotoLightboxModal';
 
 interface AmbulanceServicesProps {
   onEnquire: (serviceName: string) => void;
@@ -17,6 +18,7 @@ export interface AmbulanceServiceItem {
   registrationNumber?: string;
   baseStation?: string;
   ctaText?: string;
+  gallery?: { label: string; url: string }[];
 }
 
 export const ambulanceServicesData: AmbulanceServiceItem[] = [
@@ -37,6 +39,48 @@ export const ambulanceServicesData: AmbulanceServiceItem[] = [
     registrationNumber: 'CG15DT4039',
     baseStation: 'FM Medical College, Balasore',
     ctaText: 'Call ALS Ambulance',
+  },
+  {
+    id: 'service-omni-amb',
+    name: 'Omni Ambulance (OR 19F 5225)',
+    tag: 'Rapid Transit / Stretcher',
+    image: '/images/omni_ambulance.jpg',
+    description: 'Dedicated Maruti Suzuki Omni ambulance equipped with emergency siren flasher beacon, patient stretcher bed, and oxygen support.',
+    features: [
+      'Odisha Registered: OR 19F 5225',
+      'Emergency Siren & Blue Flasher Beacon',
+      'Patient Stretcher Bed Setup',
+      'Agile City & Rural Medical Transit',
+    ],
+    isVerified: true,
+    registrationNumber: 'OR 19F 5225',
+    baseStation: 'Balasore, Odisha',
+    ctaText: 'Call Omni Ambulance',
+    gallery: [
+      { label: 'Side View', url: '/images/omni_ambulance.jpg' },
+      { label: 'Front View', url: '/images/omni_ambulance_front.jpg' },
+    ],
+  },
+  {
+    id: 'service-dead-body-van',
+    name: 'Dead Body Van & Freezer Box',
+    tag: 'Mobile Mortuary Unit',
+    image: '/images/freezer_service.jpg',
+    description: 'Specialized Dead Body Van & Swarga Ratha equipped with built-in stainless steel mortuary freezer box, chrome glass body, and attendant seating.',
+    features: [
+      'Odisha Registered: OD02DJ8138',
+      'Deep Mortuary Freezer Box Unit',
+      'Comfortable Family Attendant Seating',
+      'Dignified Long-Distance Transit Across India',
+    ],
+    isVerified: true,
+    registrationNumber: 'OD02DJ8138',
+    baseStation: 'Balasore, Odisha',
+    ctaText: 'Enquire for Freezer Van',
+    gallery: [
+      { label: 'Exterior Van', url: '/images/freezer_service.jpg' },
+      { label: 'Freezer Chamber', url: '/images/swarga_ratha.jpg' },
+    ],
   },
   {
     id: 'service-oxygen-conc',
@@ -98,18 +142,23 @@ export const ambulanceServicesData: AmbulanceServiceItem[] = [
     description: 'Tata Winger ambulance vehicle for patient transportation and smooth interstate hospital coordination.',
     features: ['Smooth Suspension', 'Medical Equipment Space', 'Interstate Readiness'],
   },
-  {
-    id: 'service-omni-amb',
-    name: 'Omni Ambulance',
-    tag: 'Compact Van',
-    image: '/images/omni_ambulance.jpg',
-    description: 'Omni ambulance vehicle option for local and regional patient conveyance at affordable rates.',
-    features: ['Compact & Agile', 'Affordable Local Transit', 'Quick Dispatch'],
-  },
 ];
 
 export const AmbulanceServicesSection: React.FC<AmbulanceServicesProps> = ({ onEnquire }) => {
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [lightboxData, setLightboxData] = useState<LightboxData | null>(null);
+  const [activeCardImage, setActiveCardImage] = useState<Record<string, string>>({
+    'service-omni-amb': '/images/omni_ambulance.jpg',
+    'service-dead-body-van': '/images/freezer_service.jpg',
+  });
+
+  const handleSelectGalleryImage = (serviceId: string, url: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveCardImage((prev) => ({ ...prev, [serviceId]: url }));
+  };
+
+  const getCurrentImage = (service: AmbulanceServiceItem) => {
+    return activeCardImage[service.id] || service.image;
+  };
 
   return (
     <section className="section ambulance-services-section" id="ambulance-services" aria-label="Ambulance Services">
@@ -121,7 +170,7 @@ export const AmbulanceServicesSection: React.FC<AmbulanceServicesProps> = ({ onE
           </div>
           <h2 className="section-title">AMBULANCE SERVICES</h2>
           <p className="section-subtitle">
-            Reliable ALS, BLS & Oxygen Concentrator services with 24x7 readiness stationed at FM Medical College, Balasore & operating across India.
+            Reliable ALS, BLS, Omni Ambulances, Dead Body Freezer Vans & Oxygen Concentrator services with 24x7 readiness stationed at FM Medical College, Balasore & operating across India.
           </p>
         </div>
 
@@ -180,12 +229,24 @@ export const AmbulanceServicesSection: React.FC<AmbulanceServicesProps> = ({ onE
             <div className="als-highlight-right">
               <div
                 className="als-preview-frame"
-                onClick={() => setLightboxImage('/images/als_ambulance.jpg')}
+                onClick={() => setLightboxData({
+                  imageUrl: '/images/als_ambulance.jpg',
+                  title: 'Jay Bajrangbali ALS Ambulance Service',
+                  subtitle: 'Apollo Hospitals Emergency Unit • FM Medical College, Balasore',
+                  regNo: 'CG15DT4039',
+                })}
                 title="Click to view full photo banner"
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') setLightboxImage('/images/als_ambulance.jpg');
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setLightboxData({
+                      imageUrl: '/images/als_ambulance.jpg',
+                      title: 'Jay Bajrangbali ALS Ambulance Service',
+                      subtitle: 'Apollo Hospitals Emergency Unit • FM Medical College, Balasore',
+                      regNo: 'CG15DT4039',
+                    });
+                  }
                 }}
               >
                 <img
@@ -205,143 +266,136 @@ export const AmbulanceServicesSection: React.FC<AmbulanceServicesProps> = ({ onE
 
         {/* Services Cards Grid */}
         <div className="ambulance-cards-grid" style={{ marginTop: '36px' }}>
-          {ambulanceServicesData.map((service) => (
-            <div
-              key={service.id}
-              className={`ambulance-service-card ${service.id === 'service-als' ? 'featured-als-card' : ''}`}
-              id={`card-${service.id}`}
-            >
+          {ambulanceServicesData.map((service) => {
+            const currentImg = getCurrentImage(service);
+            const isClickable = !!service.isVerified || !!service.gallery;
+
+            return (
               <div
-                className="ambulance-card-media"
-                style={{ cursor: service.id === 'service-als' ? 'pointer' : 'default' }}
-                onClick={() => {
-                  if (service.id === 'service-als') {
-                    setLightboxImage(service.image);
-                  }
-                }}
+                key={service.id}
+                className={`ambulance-service-card ${service.id === 'service-als' ? 'featured-als-card' : ''}`}
+                id={`card-${service.id}`}
               >
-                <img
-                  src={service.image}
-                  alt={service.name}
-                  className="ambulance-card-img"
-                  style={service.id === 'service-als' ? { objectPosition: 'center 30%' } : {}}
-                  loading="lazy"
-                />
-                <span className="ambulance-card-tag">{service.tag}</span>
+                <div
+                  className="ambulance-card-media"
+                  style={{ cursor: isClickable ? 'pointer' : 'default' }}
+                  onClick={() => {
+                    if (isClickable) {
+                      setLightboxData({
+                        imageUrl: currentImg,
+                        title: service.name,
+                        subtitle: `${service.description} • Stationed: ${service.baseStation || 'Balasore'}`,
+                        regNo: service.registrationNumber,
+                      });
+                    }
+                  }}
+                >
+                  <img
+                    src={currentImg}
+                    alt={service.name}
+                    className="ambulance-card-img"
+                    style={service.id === 'service-als' ? { objectPosition: 'center 30%' } : {}}
+                    loading="lazy"
+                  />
+                  <span className="ambulance-card-tag">{service.tag}</span>
 
-                {service.id === 'service-als' && (
-                  <button
-                    type="button"
-                    className="als-card-zoom-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setLightboxImage(service.image);
-                    }}
-                    title="View full official photo"
-                  >
-                    <Eye size={13} />
-                    <span>View Photo</span>
-                  </button>
-                )}
-              </div>
+                  {isClickable && (
+                    <button
+                      type="button"
+                      className="als-card-zoom-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setLightboxData({
+                          imageUrl: currentImg,
+                          title: service.name,
+                          subtitle: `${service.description} • Stationed: ${service.baseStation || 'Balasore'}`,
+                          regNo: service.registrationNumber,
+                        });
+                      }}
+                      title="View full official photo"
+                    >
+                      <Eye size={13} />
+                      <span>View Photo</span>
+                    </button>
+                  )}
 
-              <div className="ambulance-card-body">
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
-                  <h3 className="ambulance-card-name">{service.name}</h3>
-                  {service.isVerified && (
-                    <span className="verified-unit-pill" title="Official Verified Vehicle">
-                      Verified Unit
-                    </span>
+                  {/* Multi-photo switcher pill bar */}
+                  {service.gallery && service.gallery.length > 1 && (
+                    <div className="card-gallery-switcher">
+                      {service.gallery.map((item, gIdx) => {
+                        const isActive = currentImg === item.url;
+                        return (
+                          <button
+                            key={gIdx}
+                            type="button"
+                            className={`gallery-switch-btn ${isActive ? 'active' : ''}`}
+                            onClick={(e) => handleSelectGalleryImage(service.id, item.url, e)}
+                          >
+                            {item.label}
+                          </button>
+                        );
+                      })}
+                    </div>
                   )}
                 </div>
 
-                <p className="ambulance-card-desc">{service.description}</p>
+                <div className="ambulance-card-body">
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                    <h3 className="ambulance-card-name">{service.name}</h3>
+                    {service.isVerified && (
+                      <span className="verified-unit-pill" title="Official Verified Vehicle">
+                        Verified Unit
+                      </span>
+                    )}
+                  </div>
 
-                {service.features && service.features.length > 0 && (
-                  <ul className="service-features-list">
-                    {service.features.map((feat, idx) => (
-                      <li key={idx} className="service-feature-item">
-                        <CheckCircle2 size={13} color="#C5161D" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                  <p className="ambulance-card-desc">{service.description}</p>
 
-                <div className="ambulance-card-actions" style={{ marginTop: 'auto' }}>
-                  <a
-                    href={`tel:${businessInfo.phone1Raw}`}
-                    className="btn-card-call"
-                    title={`Call for ${service.name}`}
-                    id={`btn-call-${service.id}`}
-                  >
-                    <Phone size={15} />
-                    <span>Call Now</span>
-                  </a>
+                  {service.features && service.features.length > 0 && (
+                    <ul className="service-features-list">
+                      {service.features.map((feat, idx) => (
+                        <li key={idx} className="service-feature-item">
+                          <CheckCircle2 size={13} color="#C5161D" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
-                  <button
-                    type="button"
-                    onClick={() => onEnquire(service.name)}
-                    className="btn-card-enquire"
-                    title={`Enquire for ${service.name}`}
-                    id={`btn-enquire-${service.id}`}
-                  >
-                    <CalendarCheck size={15} />
-                    <span>Enquire</span>
-                  </button>
+                  <div className="ambulance-card-actions" style={{ marginTop: 'auto' }}>
+                    <a
+                      href={`tel:${businessInfo.phone1Raw}`}
+                      className="btn-card-call"
+                      title={`Call for ${service.name}`}
+                      id={`btn-call-${service.id}`}
+                    >
+                      <Phone size={15} />
+                      <span>Call Now</span>
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={() => onEnquire(service.name)}
+                      className="btn-card-enquire"
+                      title={`Enquire for ${service.name}`}
+                      id={`btn-enquire-${service.id}`}
+                    >
+                      <CalendarCheck size={15} />
+                      <span>Enquire</span>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* Lightbox Modal for Full Authentic Photo */}
-      {lightboxImage && (
-        <div
-          className="als-lightbox-backdrop"
-          onClick={() => setLightboxImage(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Full Ambulance Photo View"
-        >
-          <div
-            className="als-lightbox-dialog"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="als-lightbox-close"
-              onClick={() => setLightboxImage(null)}
-              aria-label="Close photo preview"
-            >
-              <X size={24} />
-            </button>
-
-            <div className="als-lightbox-body">
-              <img
-                src={lightboxImage}
-                alt="Jay Bajrangbali Travels and Ambulance Service - ALS Ambulance"
-                className="als-lightbox-img"
-              />
-              <div className="als-lightbox-caption">
-                <div className="als-lightbox-title">Jay Bajrangbali Travels and Ambulance Service</div>
-                <div className="als-lightbox-sub">
-                  ALS Ambulance Service • Force ICU Unit (CG15DT4039) • FM Medical College, Balasore
-                </div>
-                <div className="als-lightbox-actions">
-                  <a href={`tel:${businessInfo.phone1Raw}`} className="btn-primary-red" style={{ padding: '8px 16px', fontSize: '0.88rem' }}>
-                    <Phone size={16} /> Call Primary: {businessInfo.phone1}
-                  </a>
-                  <a href={`tel:${businessInfo.phone2Raw}`} className="btn-secondary-navy" style={{ padding: '8px 16px', fontSize: '0.88rem' }}>
-                    <Phone size={16} /> Alternate: {businessInfo.phone2}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Shared Lightbox Modal */}
+      <PhotoLightboxModal
+        data={lightboxData}
+        onClose={() => setLightboxData(null)}
+      />
     </section>
   );
 };

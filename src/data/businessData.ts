@@ -108,12 +108,21 @@ export const specialServices: SpecialServiceItem[] = [
   },
   {
     id: 'freezer-service',
-    name: 'Freezer Service',
-    badge: 'Preservation & Transport',
-    description: 'Freezer box service available for preservation, transportation, and related requirements.',
+    name: 'Dead Body Van & Freezer Box',
+    badge: 'Mobile Mortuary Unit',
+    description: 'Specialized Dead Body Van (OD02DJ8138) with built-in stainless steel mortuary freezer box for hygienic, dignified, and long-distance mortal transit.',
     image: '/images/freezer_service.jpg',
-    ctaText: 'Enquire Now',
+    ctaText: 'Enquire for Freezer Van',
     ctaType: 'enquire',
+  },
+  {
+    id: 'swarga-ratha-service',
+    name: 'Swarga Ratha Service',
+    badge: 'Dignified Final Journey',
+    description: 'Respectful Swarga Ratha vehicle (OD02DJ8138) equipped with mortuary freezer unit, ambient lighting, and spacious attendant seating.',
+    image: '/images/swarga_ratha.jpg',
+    ctaText: 'Contact Swarga Ratha',
+    ctaType: 'contact',
   },
   {
     id: 'horse-van-service',
@@ -123,15 +132,6 @@ export const specialServices: SpecialServiceItem[] = [
     image: '/images/horse_van.jpg',
     ctaText: 'Contact Us',
     ctaType: 'enquire',
-  },
-  {
-    id: 'swarga-ratha-service',
-    name: 'Swarga Ratha',
-    badge: 'Dignified Transport',
-    description: 'Respectful and dignified transportation service for final journey arrangements.',
-    image: '/images/swarga_ratha.jpg',
-    ctaText: 'Contact Us',
-    ctaType: 'contact',
   },
 ];
 

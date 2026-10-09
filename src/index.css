@@ -2212,6 +2212,42 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.05);
 }
 
+/* Card Gallery Switcher Buttons */
+.card-gallery-switcher {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+
+.gallery-switch-btn {
+  background: rgba(11, 19, 43, 0.88);
+  backdrop-filter: blur(4px);
+  color: #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.gallery-switch-btn:hover {
+  background: rgba(11, 19, 43, 0.98);
+  border-color: #EF4444;
+  color: #FFFFFF;
+}
+
+.gallery-switch-btn.active {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(197, 22, 29, 0.4);
+}
+
 .verified-unit-pill {
   background: #DCFCE7;
   color: #15803D;
