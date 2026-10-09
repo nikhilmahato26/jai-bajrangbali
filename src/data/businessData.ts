@@ -5,6 +5,8 @@ export interface BusinessContact {
   phone2: string;
   phone2Raw: string;
   email: string;
+  address: string;
+  city: string;
   serviceArea: string;
   whatsappUrl: string;
 }
@@ -16,7 +18,9 @@ export const businessInfo: BusinessContact = {
   phone2: '+91 7064013879',
   phone2Raw: '+917064013879',
   email: 'biswojitbehera1204@gmail.com',
-  serviceArea: 'All Over India',
+  address: 'FM Medical College, Balasore, 756001, Odisha',
+  city: 'Balasore, Odisha',
+  serviceArea: 'Balasore & All Over India',
   whatsappUrl: 'https://wa.me/916372616946',
 };
 
@@ -32,8 +36,8 @@ export interface QuickServiceItem {
 export const quickServices: QuickServiceItem[] = [
   {
     id: 'als-ambulance-quick',
-    title: 'ALS Ambulance',
-    subtitle: 'Advanced ambulance service.',
+    title: 'ALS Ambulance Service',
+    subtitle: 'Advanced ICU, cardiac care & oxygen support.',
     iconName: 'heart-pulse',
     category: 'ambulance',
     link: '#ambulance-services',
@@ -57,7 +61,7 @@ export const quickServices: QuickServiceItem[] = [
   {
     id: 'special-transport-quick',
     title: 'Special Transportation',
-    subtitle: 'Freezer, Horse Van and Swarga Ratha services.',
+    subtitle: 'Oxygen Concentrator, Freezer, Horse Van & Swarga Ratha.',
     iconName: 'shield-check',
     category: 'special',
     link: '#special-services',
@@ -77,36 +81,36 @@ export interface SpecialServiceItem {
 export const specialServices: SpecialServiceItem[] = [
   {
     id: 'als-service',
-    name: 'ALS Ambulance',
-    badge: 'Medical Transport',
-    description: 'Ambulance transportation service for requirements requiring advanced ambulance support.',
+    name: 'ALS Ambulance Service',
+    badge: 'ICU & Cardiac Care',
+    description: 'Advanced Life Support (ALS) ICU ambulance with oxygen support, cardiac care, stretcher service, and trained medical staff.',
     image: '/images/als_ambulance.jpg',
-    ctaText: 'Call for Ambulance',
+    ctaText: 'Call ALS Ambulance',
     ctaType: 'call',
+  },
+  {
+    id: 'oxygen-service',
+    name: 'Oxygen Concentrator Service',
+    badge: 'Medical Oxygen Support',
+    description: '24/7 Oxygen concentrator rental and supply service for patient respiratory therapy, in-transit oxygen, and home medical support.',
+    image: '/images/oxygen_concentrator.jpg',
+    ctaText: 'Enquire for Oxygen',
+    ctaType: 'enquire',
   },
   {
     id: 'bls-service',
     name: 'BLS Ambulance',
     badge: 'Medical Transport',
-    description: 'Ambulance transportation service for basic life-support requirements.',
+    description: 'Ambulance transportation service for basic life-support requirements and patient transit.',
     image: '/images/force_traveller_ambulance.jpg',
     ctaText: 'Call for Ambulance',
     ctaType: 'call',
   },
   {
-    id: 'oxygen-service',
-    name: 'Oxygen Concentrator',
-    badge: 'Equipment & Transport',
-    description: 'Enquire about oxygen concentrator availability and related transportation requirements.',
-    image: '/images/oxygen_concentrator.jpg',
-    ctaText: 'Enquire Now',
-    ctaType: 'enquire',
-  },
-  {
     id: 'freezer-service',
     name: 'Freezer Service',
     badge: 'Preservation & Transport',
-    description: 'Freezer service available for transportation and related requirements.',
+    description: 'Freezer box service available for preservation, transportation, and related requirements.',
     image: '/images/freezer_service.jpg',
     ctaText: 'Enquire Now',
     ctaType: 'enquire',
@@ -115,7 +119,7 @@ export const specialServices: SpecialServiceItem[] = [
     id: 'horse-van-service',
     name: 'Horse Van',
     badge: 'Specialized Transport',
-    description: 'Horse Van transportation service. Contact us for availability and requirements.',
+    description: 'Horse Van transportation service. Contact us for availability and route scheduling.',
     image: '/images/horse_van.jpg',
     ctaText: 'Contact Us',
     ctaType: 'enquire',
@@ -124,7 +128,7 @@ export const specialServices: SpecialServiceItem[] = [
     id: 'swarga-ratha-service',
     name: 'Swarga Ratha',
     badge: 'Dignified Transport',
-    description: 'Respectful transportation service for final journey arrangements.',
+    description: 'Respectful and dignified transportation service for final journey arrangements.',
     image: '/images/swarga_ratha.jpg',
     ctaText: 'Contact Us',
     ctaType: 'contact',

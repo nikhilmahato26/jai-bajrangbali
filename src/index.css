@@ -2035,3 +2035,304 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.08);
   box-shadow: 0 10px 25px rgba(37, 211, 102, 0.55);
 }
+
+/* ==========================================================================
+   ALS Ambulance Spotlight Banner & Photo Lightbox Modal
+   ========================================================================== */
+
+.als-highlight-banner {
+  background: linear-gradient(135deg, #0B132B 0%, #172554 100%);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(11, 19, 43, 0.25), 0 0 20px rgba(239, 68, 68, 0.12);
+}
+
+.als-highlight-banner::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.als-highlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  color: #FCA5A5;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  margin-bottom: 20px;
+}
+
+.als-highlight-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .als-highlight-content {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 36px;
+  }
+}
+
+.als-highlight-title {
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.als-highlight-desc {
+  color: #CBD5E1;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.als-highlight-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.als-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #F8FAFC;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.als-highlight-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.als-preview-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: #000;
+}
+
+.als-preview-frame:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: #EF4444;
+  box-shadow: 0 16px 32px rgba(239, 68, 68, 0.3);
+}
+
+.als-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transition: transform 0.5s ease;
+}
+
+.als-preview-frame:hover .als-preview-img {
+  transform: scale(1.06);
+}
+
+.als-preview-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  color: #FFFFFF;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Card Specific Badges & Actions */
+.featured-als-card {
+  border: 2px solid #EF4444 !important;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15) !important;
+}
+
+.als-card-zoom-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(11, 19, 43, 0.85);
+  backdrop-filter: blur(4px);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 5px 10px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 2;
+}
+
+.als-card-zoom-btn:hover {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  transform: scale(1.05);
+}
+
+.verified-unit-pill {
+  background: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #86EFAC;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.service-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.service-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.84rem;
+  color: var(--slate-700);
+  font-weight: 500;
+}
+
+/* Lightbox Modal */
+.als-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.als-lightbox-dialog {
+  position: relative;
+  max-width: 580px;
+  width: 100%;
+  max-height: 92vh;
+  background: #0B132B;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+.als-lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.als-lightbox-close:hover {
+  background: #EF4444;
+  transform: rotate(90deg);
+}
+
+.als-lightbox-body {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.als-lightbox-img {
+  width: 100%;
+  max-height: 66vh;
+  object-fit: contain;
+  background-color: #000000;
+  display: block;
+}
+
+.als-lightbox-caption {
+  padding: 18px 22px;
+  background: #0F172A;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.als-lightbox-title {
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.als-lightbox-sub {
+  color: #94A3B8;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.als-lightbox-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}

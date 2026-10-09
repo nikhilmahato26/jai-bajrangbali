@@ -17,7 +17,7 @@ export const SpecialTransportationSection: React.FC<SpecialTransportationProps> 
           </div>
           <h2 className="section-title">SPECIAL TRANSPORTATION SERVICES</h2>
           <p className="section-subtitle">
-            Dignified, respectful, and specialized transportation services handled with utmost care across India.
+            Oxygen Concentrator rentals, Freezer box preservation, Swarga Ratha, and specialized transit handled with utmost dignity and care across India.
           </p>
         </div>
 

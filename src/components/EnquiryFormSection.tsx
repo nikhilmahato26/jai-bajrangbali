@@ -4,7 +4,8 @@ import { businessInfo } from '../data/businessData';
 import { allFleetVehicles } from '../data/fleetData';
 
 export const serviceOptionsList = [
-  'ALS Ambulance',
+  'ALS Ambulance Service',
+  'Oxygen Concentrator Service',
   'BLS Ambulance',
   'Bolero Ambulance',
   'Eco Ambulance',
@@ -15,6 +16,7 @@ export const serviceOptionsList = [
   'Horse Van',
   'Swarga Ratha',
   'Oxygen Concentrator',
+  'ALS Ambulance',
   'Car Service',
   'Traveller Service',
   'Bus Service',
@@ -22,7 +24,10 @@ export const serviceOptionsList = [
 ];
 
 const ambulanceServicesSet = new Set([
+  'ALS Ambulance Service',
   'ALS Ambulance',
+  'Oxygen Concentrator Service',
+  'Oxygen Concentrator',
   'BLS Ambulance',
   'Bolero Ambulance',
   'Eco Ambulance',
@@ -31,7 +36,6 @@ const ambulanceServicesSet = new Set([
   'Omni Ambulance',
   'Freezer',
   'Swarga Ratha',
-  'Oxygen Concentrator',
 ]);
 
 interface EnquiryFormSectionProps {

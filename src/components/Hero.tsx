@@ -11,7 +11,7 @@ export const Hero: React.FC = () => {
           <div className="hero-content">
             <div className="section-eyebrow">
               <ShieldCheck size={16} />
-              <span>ALL INDIA SERVICE</span>
+              <span>FM MEDICAL COLLEGE, BALASORE • ALL INDIA SERVICE</span>
             </div>
 
             <h1 className="hero-heading">
@@ -19,7 +19,7 @@ export const Hero: React.FC = () => {
             </h1>
 
             <p className="hero-desc">
-              Jay Bajrangbali Travels and Ambulance Service provides ambulance transportation, special transportation services, cars, travellers and bus services across India.
+              Jay Bajrangbali Travels and Ambulance Service provides 24x7 ALS ICU & BLS ambulance transportation, oxygen concentrator support, specialized medical transit, cars, travellers, and buses across India.
             </p>
 
             <div className="hero-buttons">
@@ -52,7 +52,7 @@ export const Hero: React.FC = () => {
                 </div>
                 <div>
                   <div className="split-badge-title">Emergency Medical</div>
-                  <div className="split-badge-sub">ALS, BLS & Patient Vans</div>
+                  <div className="split-badge-sub">ALS ICU, BLS & Oxygen Service</div>
                 </div>
               </div>
 

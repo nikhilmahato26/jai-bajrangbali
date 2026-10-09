@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
             <div className="top-notice-left">
               <span className="top-info-item">
                 <MapPin size={14} className="text-red-500" />
-                <span>Service Area: <strong>{businessInfo.serviceArea}</strong></span>
+                <span>Base: <strong>FM Medical College, Balasore</strong> | <strong>All India Service</strong></span>
               </span>
               <span className="top-info-item">
                 <Mail size={14} />

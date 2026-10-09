@@ -13,6 +13,16 @@ export interface Vehicle {
 
 export const ambulanceFleet: Vehicle[] = [
   {
+    id: 'amb-als',
+    name: 'ALS Ambulance Service',
+    category: 'Ambulance',
+    typeBadge: 'Advanced ICU / Cardiac Care',
+    image: '/images/als_ambulance.jpg',
+    description: 'Advanced Life Support (ALS) ICU Ambulance equipped with oxygen support, cardiac care, stretcher service, and trained medical staff.',
+    isEmergency: true,
+    serviceTag: 'ALS Ambulance Service',
+  },
+  {
     id: 'amb-bolero',
     name: 'Bolero Ambulance',
     category: 'Ambulance',

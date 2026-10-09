@@ -58,7 +58,7 @@ export const Footer = () => {
               <li><a href="#special-services">Freezer Box Service</a></li>
               <li><a href="#special-services">Swarga Ratha Service</a></li>
               <li><a href="#special-services">Horse Van Service</a></li>
-              <li><a href="#special-services">Oxygen Concentrator Enquiries</a></li>
+              <li><a href="#special-services">Oxygen Concentrator Service</a></li>
             </ul>
           </div>
 
@@ -92,8 +92,9 @@ export const Footer = () => {
             <div className="footer-contact-item">
               <MapPin size={18} color="#F59E0B" style={{ marginTop: '3px', flexShrink: 0 }} />
               <div>
-                <span className="label">Service Area</span>
-                <span style={{ color: '#FFFFFF', fontWeight: 600 }}>{businessInfo.serviceArea}</span>
+                <span className="label">Base Location</span>
+                <span style={{ color: '#FFFFFF', fontWeight: 600 }}>{businessInfo.address}</span>
+                <div style={{ color: '#94A3B8', fontSize: '0.8rem', marginTop: '3px' }}>Operations: All Over India</div>
               </div>
             </div>
           </div>

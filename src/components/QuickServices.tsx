@@ -11,8 +11,8 @@ export const QuickServices: React.FC = () => {
             <div className="quick-card-icon">
               <HeartPulse size={26} />
             </div>
-            <h2 className="quick-card-title">ALS Ambulance</h2>
-            <p className="quick-card-subtitle">Advanced ambulance service.</p>
+            <h2 className="quick-card-title">ALS Ambulance Service</h2>
+            <p className="quick-card-subtitle">Advanced ICU, cardiac care & oxygen support.</p>
             <a href="#ambulance-services" className="quick-card-link">
               <span>View Ambulance Fleet</span>
               <ArrowRight size={16} />
@@ -51,7 +51,7 @@ export const QuickServices: React.FC = () => {
               <Shield size={26} />
             </div>
             <h2 className="quick-card-title">Special Transportation</h2>
-            <p className="quick-card-subtitle">Freezer, Horse Van and Swarga Ratha services.</p>
+            <p className="quick-card-subtitle">Oxygen Concentrator, Freezer, Horse Van & Swarga Ratha.</p>
             <a href="#special-services" className="quick-card-link">
               <span>View Special Services</span>
               <ArrowRight size={16} />

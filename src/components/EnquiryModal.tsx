@@ -30,6 +30,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
   const isEmergency =
     serviceName.toLowerCase().includes('ambulance') ||
     vehicleName.toLowerCase().includes('ambulance') ||
+    serviceName.toLowerCase().includes('oxygen') ||
     serviceName.toLowerCase().includes('freezer') ||
     serviceName.toLowerCase().includes('swarga');
 

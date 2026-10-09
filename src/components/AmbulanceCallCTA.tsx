@@ -17,7 +17,7 @@ export const AmbulanceCallCTA: React.FC = () => {
           </h2>
 
           <p className="ambulance-cta-subtitle">
-            Contact Jay Bajrangbali Travels and Ambulance Service for ambulance transportation enquiries.
+            Contact Jay Bajrangbali Travels and Ambulance Service for 24x7 ALS ICU ambulance, BLS patient transit, and Oxygen Concentrator assistance. Stationed at FM Medical College, Balasore & serving all of India.
           </p>
 
           <div className="ambulance-cta-buttons">
